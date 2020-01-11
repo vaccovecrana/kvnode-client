@@ -1,6 +1,7 @@
 package io.vacco.summitdb;
 
 public class SdClientConfig {
+
   public String host;
   public int port;
   public int inputBufferSize = -1;
@@ -13,5 +14,9 @@ public class SdClientConfig {
     c.inputBufferSize = inputBufferSize;
     c.outputBufferSize = outputBufferSize;
     return c;
+  }
+
+  public static SdClientConfig of(String host, int port) {
+    return of(host, port, -1, -1);
   }
 }
