@@ -2,7 +2,6 @@ package io.vacco.summitdb;
 
 import io.vacco.redis.*;
 import stormpot.*;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class SdClient {
@@ -41,9 +40,5 @@ public class SdClient {
       c.accept(r);
       return null;
     });
-  }
-
-  public String rawStrCmd(Redis r, Object ... args) throws IOException {
-    return new String((byte[]) r.call(args));
   }
 }
