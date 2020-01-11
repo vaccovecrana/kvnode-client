@@ -1,5 +1,6 @@
 package io.vacco.summitdb;
 
+import io.vacco.summitdb.options.SdSet;
 import j8spec.annotation.DefinedOrder;
 import j8spec.junit.J8SpecRunner;
 import org.junit.runner.RunWith;
@@ -53,6 +54,9 @@ public class SdClientSpec {
           System.out.println(get(r, "nonexisting"));
           System.out.println(set(r, "mykey1", "Hello"));
           System.out.println(get(r, "mykey1"));
+
+          // SET
+          System.out.println(set(r, new SdSet().withKey("key3").withValue("Friend").withExSeconds(5).withNx(true)));
         });
       });
       it("Can shutdown the client", () -> sc.getPool().shutdown());

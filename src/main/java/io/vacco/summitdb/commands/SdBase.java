@@ -2,6 +2,8 @@ package io.vacco.summitdb.commands;
 
 import io.vacco.redis.Redis;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class SdBase {
 
@@ -13,4 +15,12 @@ public class SdBase {
     return null;
   }
 
+  public static Object[] stringArgs(Object[] in) {
+    return Arrays.stream(in)
+        .filter(Objects::nonNull)
+        .flatMap(o -> o instanceof Object[] ?
+            Arrays.stream((Object[]) o) :
+            Arrays.stream(new Object[] {o})
+        ).map(Object::toString).toArray();
+  }
 }

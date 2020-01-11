@@ -1,6 +1,8 @@
 package io.vacco.summitdb.commands;
 
 import io.vacco.redis.Redis;
+import io.vacco.summitdb.options.SdSet;
+
 import java.io.IOException;
 
 public class SdKeyValue {
@@ -26,28 +28,8 @@ public class SdKeyValue {
     return SdBase.rawStrCmd(r, "SET", key, value);
   }
 
-  public static String setEx(Redis r, String key, String value, long seconds) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "EX", seconds);
-  }
-
-  public static String setExNx(Redis r, String key, String value, long seconds) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "EX", seconds, "NX");
-  }
-
-  public static String setExXx(Redis r, String key, String value, long seconds) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "EX", seconds, "XX");
-  }
-
-  public static String setPx(Redis r, String key, String value, long millis) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "PX", millis);
-  }
-
-  public static String setPxNx(Redis r, String key, String value, long millis) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "PX", millis, "NX");
-  }
-
-  public static String setPxXx(Redis r, String key, String value, long millis) throws IOException {
-    return SdBase.rawStrCmd(r, "SET", key, value, "PX", millis, "XX");
+  public static String set(Redis r, SdSet set) throws IOException {
+    return SdBase.rawStrCmd(r, set.toArgs());
   }
 
 }
