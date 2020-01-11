@@ -2,38 +2,38 @@ package io.vacco.summitdb.options;
 
 import static io.vacco.summitdb.commands.SdBase.*;
 
-public class SdSet {
+public class SdSetEx implements SdOptions {
 
   private String key, value;
   private long exSeconds = -1, exMillis = -1;
   private boolean nx = false, xx = false;
 
-  public SdSet withKey(String key) {
+  public SdSetEx key(String key) {
     this.key = key;
     return this;
   }
 
-  public SdSet withValue(String value) {
+  public SdSetEx value(String value) {
     this.value = value;
     return this;
   }
 
-  public SdSet withExSeconds(long seconds) {
+  public SdSetEx exSeconds(long seconds) {
     this.exSeconds = seconds;
     return this;
   }
 
-  public SdSet withExMillis(long millis) {
+  public SdSetEx exMillis(long millis) {
     this.exMillis = millis;
     return this;
   }
 
-  public SdSet withNx(boolean nx) {
+  public SdSetEx nx(boolean nx) {
     this.nx = nx;
     return this;
   }
 
-  public SdSet withXx(boolean xx) {
+  public SdSetEx xx(boolean xx) {
     this.xx = xx;
     return this;
   }

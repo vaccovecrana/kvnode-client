@@ -23,4 +23,8 @@ public class SdBase {
             Arrays.stream(new Object[] {o})
         ).map(Object::toString).toArray();
   }
+
+  public static String flushDb(Redis r) throws IOException {
+    return rawStrCmd(r, "FLUSHDB");
+  }
 }
