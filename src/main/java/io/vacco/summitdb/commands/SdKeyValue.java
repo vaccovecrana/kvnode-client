@@ -12,6 +12,10 @@ public class SdKeyValue {
     return r.call("APPEND", key, value);
   }
 
+  public static long dbSize(Redis r) throws IOException {
+    return r.call("DBSIZE");
+  }
+
   public static long exists(Redis r, String ... keys) throws IOException {
     Object[] oa = new Object[keys.length + 1];
     oa[0] = "EXISTS";
@@ -35,6 +39,10 @@ public class SdKeyValue {
 
   public static String set(Redis r, SdSetEx set) throws IOException {
     return SdBase.rawStrCmd(r, set.toArgs());
+  }
+
+  public static long strLen(Redis r, String key) throws IOException {
+    return r.call("STRLEN", key);
   }
 
 }

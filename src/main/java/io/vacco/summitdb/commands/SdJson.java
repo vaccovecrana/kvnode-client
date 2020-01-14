@@ -1,7 +1,7 @@
 package io.vacco.summitdb.commands;
 
 import io.vacco.redis.Redis;
-import io.vacco.summitdb.options.SdSetJon;
+import io.vacco.summitdb.options.SdJSet;
 import java.io.IOException;
 
 public class SdJson {
@@ -10,7 +10,7 @@ public class SdJson {
     return SdBase.rawStrCmd(r, "JSET", key, path, value);
   }
 
-  public static String jset(Redis r, SdSetJon s) throws IOException {
+  public static String jset(Redis r, SdJSet s) throws IOException {
     return SdBase.rawStrCmd(r, s.toArgs());
   }
 

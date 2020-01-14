@@ -1,9 +1,7 @@
 package io.vacco.summitdb.options;
 
-import java.util.Arrays;
 import java.util.HashMap;
-
-import static io.vacco.summitdb.commands.SdBase.stringArgs;
+import static io.vacco.summitdb.commands.SdBase.flatten;
 
 public class SdMSet extends HashMap<String, String> implements SdOptions {
 
@@ -13,11 +11,11 @@ public class SdMSet extends HashMap<String, String> implements SdOptions {
   }
 
   public Object[] toArgs() {
-    return stringArgs(new Object[] {
+    return flatten(new Object[] {
         "MSET",
         this.entrySet().stream()
-            .flatMap(e -> Arrays.stream(new Object[] {e.getKey(), e.getValue()}))
+            .map(e -> new Object[] {e.getKey(), e.getValue()})
             .toArray()
-    });
+    }).toArray();
   }
 }

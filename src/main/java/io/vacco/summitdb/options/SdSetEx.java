@@ -1,6 +1,6 @@
 package io.vacco.summitdb.options;
 
-import static io.vacco.summitdb.commands.SdBase.*;
+import static io.vacco.summitdb.commands.SdBase.flatten;
 
 public class SdSetEx implements SdOptions {
 
@@ -39,11 +39,11 @@ public class SdSetEx implements SdOptions {
   }
 
   public Object[] toArgs() {
-    return stringArgs(new Object[] {
+    return flatten(new Object[] {
         "SET", key, value,
         exSeconds != -1 ? new Object[] {"EX", exSeconds} : null,
         exMillis != -1 ? new Object[] {"PX", exMillis} : null,
         nx ? "NX" : null, xx ? "XX" : null
-    });
+    }).toArray();
   }
 }
