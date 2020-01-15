@@ -163,7 +163,35 @@ public class SdClientSpec {
         sc.withConn(r -> {
           log(setIndex(r, new SdSetIndexSpatial().namePattern(new SdSetIndexNamePattern().name("fleet").pattern("fleet:*:pos"))));
           log(set(r, "fleet:0:pos", "[-115.567 33.532]"));
+          log(set(r, "fleet:1:pos", "[-121.896 32.334]"));
+          log(set(r, "fleet:2:pos", "[-116.671 35.735]"));
+          log(set(r, "fleet:3:pos", "[-113.902 31.234]"));
+          log(rect(r, new SdRect().index("fleet").rectangle("[-117 30],[-112 36]")));
+        });
+        sc.withConn(r -> {
+          log(flushDb(r));
+          log(setIndex(r, new SdSetIndexSpatial().namePattern(new SdSetIndexNamePattern().name("fleet").pattern("fleet:*")).json("pos")));
+          log(set(r, "fleet:0", "{\"driver\":\"Janet\",\"pos\":{\"type\":\"Point\",\"coordinates\":[-115.567,33.532]}}"));
+          log(set(r, "fleet:1", "{\"driver\":\"Tom\",\"pos\":{\"type\":\"Point\",\"coordinates\":[-121.896,32.334]}}"));
+          log(set(r, "fleet:2", "{\"driver\":\"Andrew\",\"pos\":{\"type\":\"Point\",\"coordinates\":[-116.671,35.735]}}"));
+          log(set(r, "fleet:3", "{\"driver\":\"Pam\",\"pos\":{\"type\":\"Point\",\"coordinates\":[-113.902,31.234]}}"));
+          log(rect(r, new SdRect().index("fleet").rectangle("{\"pos\":\"[-117 30],[-112 36]\"}")));
+        });
+      });
 
+      it("Can execute DELINDEX commands", () -> {
+        sc.withConn(r -> {
+          log(setIndex(r, new SdSetIndexText().namePattern(new SdSetIndexNamePattern().name("idx1").pattern("*"))));
+          log(delIndex(r, "idx1"));
+        });
+      });
+
+      it("Can execute INDEXES commands", () -> {
+        sc.withConn(r -> {
+          log(setIndex(r, new SdSetIndexText().namePattern(new SdSetIndexNamePattern().name("name").pattern("user:*:name"))));
+          log(setIndex(r, new SdSetIndexNumber().namePattern(new SdSetIndexNamePattern().name("age").pattern("user:*:age")).type(SdSetIndexNumber.Type.INT)));
+          log(indexes(r, new SdIndexes().pattern("*")));
+          log(indexes(r, new SdIndexes().pattern("*").details(true)));
         });
       });
 
@@ -178,6 +206,11 @@ public class SdClientSpec {
           log(append(r, "mykey0", "Hello"));
           log(append(r, "mykey0", " World"));
           log(get(r, "mykey0"));
+
+          // DEL
+          log(set(r, "keyT1", "Hello"));
+          log(set(r, "keyT2", "Hello"));
+          log(del(r, "keyT1", "keyT2", "keyT3"));
 
           // EXISTS
           log(set(r, "key1", "Hello"));

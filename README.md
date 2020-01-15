@@ -13,7 +13,7 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [x] DBSIZE
 - [ ] DECR
 - [ ] DECRBY
-- [ ] DEL
+- [x] DEL
 - [x] EXISTS
 - [ ] EXPIRE
 - [ ] EXPIREAT
@@ -52,11 +52,11 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 
 ### Indexes and iteration
 
-- [ ] DELINDEX
-- [ ] INDEXES
+- [x] DELINDEX
+- [x] INDEXES
 - [x] ITER
-- [ ] RECT
-- [ ] SETINDEX
+- [x] RECT
+- [x] SETINDEX
 
 ### Transactions
 

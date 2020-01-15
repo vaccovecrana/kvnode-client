@@ -3,7 +3,6 @@ package io.vacco.summitdb.commands;
 import io.vacco.redis.Redis;
 import io.vacco.summitdb.options.SdMSet;
 import io.vacco.summitdb.options.SdSetEx;
-
 import java.io.IOException;
 
 public class SdKeyValue {
@@ -16,13 +15,12 @@ public class SdKeyValue {
     return r.call("DBSIZE");
   }
 
+  public static long del(Redis r, String ... keys) throws IOException {
+    return r.call(SdBase.flatten(new Object[] {"DEL", keys}).toArray());
+  }
+
   public static long exists(Redis r, String ... keys) throws IOException {
-    Object[] oa = new Object[keys.length + 1];
-    oa[0] = "EXISTS";
-    for (int i = 0; i < keys.length; i++) {
-      oa[i + 1] = keys[i];
-    }
-    return r.call(oa);
+    return r.call(SdBase.flatten(new Object[] {"EXISTS", keys}).toArray());
   }
 
   public static String get(Redis r, String key) throws IOException {
