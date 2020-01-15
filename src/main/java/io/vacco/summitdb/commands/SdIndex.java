@@ -6,7 +6,6 @@ import io.vacco.summitdb.util.SdIndexMetadata;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +24,7 @@ public class SdIndex {
         byte[] bPath = (byte[]) raw.get(i + 1);
         byte[] bDetails = ((byte[]) ((List) ((List) raw.get(i + 2)).get(0)).get(0));
         metadata.add(SdIndexMetadata.from(
-            new String(bName),
-            new String(bPath),
-            new String(bDetails)
+            new String(bName), new String(bPath), new String(bDetails)
         ));
       }
       return metadata;
