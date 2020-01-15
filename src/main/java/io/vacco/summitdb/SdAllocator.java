@@ -18,9 +18,9 @@ public class SdAllocator implements Allocator<Pooled<Redis>> {
   public Pooled<Redis> allocate(Slot slot) {
     return new Pooled<>(slot, Failable.doTryRt(() -> {
       if (config.inputBufferSize != -1 && config.outputBufferSize != -1) {
-        return new Redis(new Socket(config.host, config.port), config.inputBufferSize, config.outputBufferSize);
+        return new Redis(new Socket(config.node.host, config.node.port), config.inputBufferSize, config.outputBufferSize);
       }
-      return new Redis(new Socket(config.host, config.port));
+      return new Redis(new Socket(config.node.host, config.node.port));
     }));
   }
 
@@ -28,4 +28,6 @@ public class SdAllocator implements Allocator<Pooled<Redis>> {
   public void deallocate(Pooled<Redis> poolable) {
     poolable.object.close();
   }
+
+  public SdClientConfig getConfig() { return config; }
 }

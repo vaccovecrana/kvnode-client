@@ -10,20 +10,6 @@ import java.util.List;
 /** Implements the parser (reader) side of protocol. */
 public class Parser implements Closeable {
 
-  /** Thrown whenever data could not be parsed. */
-  static class ProtocolException extends IOException {
-    ProtocolException(String msg) {
-      super(msg);
-    }
-  }
-
-  /** Thrown whenever an error string is decoded. */
-  static class ServerError extends IOException {
-    ServerError(String msg) {
-      super(msg);
-    }
-  }
-
   /** The input stream used to read the data from. */
   private final InputStream input;
 
