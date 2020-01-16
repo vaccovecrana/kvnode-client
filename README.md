@@ -15,8 +15,8 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [ ] DECRBY
 - [x] DEL
 - [x] EXISTS
-- [ ] EXPIRE
-- [ ] EXPIREAT
+- [x] EXPIRE
+- [x] EXPIREAT
 - [ ] FENCE
 - [ ] FENCEGET
 - [x] FLUSHDB
@@ -27,7 +27,7 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [ ] INCR
 - [ ] INCRBY
 - [ ] INCRBYFLOAT
-- [ ] KEYS
+- [x] KEYS
 - [ ] MGET
 - [x] MSET
 - [ ] MSETNX
@@ -42,7 +42,7 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [ ] SETBIT
 - [ ] SETRANGE
 - [x] STRLEN
-- [ ] TTL
+- [x] TTL
 
 ### JSON
 

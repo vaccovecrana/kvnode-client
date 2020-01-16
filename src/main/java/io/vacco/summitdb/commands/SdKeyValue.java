@@ -1,9 +1,11 @@
 package io.vacco.summitdb.commands;
 
 import io.vacco.redis.Redis;
+import io.vacco.summitdb.options.SdKeys;
 import io.vacco.summitdb.options.SdMSet;
 import io.vacco.summitdb.options.SdSetEx;
 import java.io.IOException;
+import java.util.List;
 
 public class SdKeyValue {
 
@@ -23,8 +25,20 @@ public class SdKeyValue {
     return r.call(SdBase.flatten(new Object[] {"EXISTS", keys}).toArray());
   }
 
+  public static long expire(Redis r, String key, long seconds) throws IOException {
+    return r.call("EXPIRE", key, Long.toString(seconds)); // TODO why is summitdb not accepting a number primitive???
+  }
+
+  public static long expireAt(Redis r, String key, long timeStamp) throws IOException {
+    return r.call("EXPIREAT", key, Long.toString(timeStamp));
+  }
+
   public static String get(Redis r, String key) throws IOException {
     return SdBase.rawStrCmd(r, "GET", key);
+  }
+
+  public static List<String> keys(Redis r, SdKeys keys) throws IOException {
+    return SdBase.toStringList(r.call(keys.toArgs()));
   }
 
   public static String mset(Redis r, SdMSet mSet) throws IOException {
@@ -43,4 +57,7 @@ public class SdKeyValue {
     return r.call("STRLEN", key);
   }
 
+  public static long ttl(Redis r, String key) throws IOException {
+    return r.call("TTL", key);
+  }
 }

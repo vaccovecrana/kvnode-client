@@ -3,7 +3,9 @@ package io.vacco.summitdb.commands;
 import io.vacco.redis.Redis;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SdBase {
@@ -14,6 +16,10 @@ public class SdBase {
       return new String(response);
     }
     return null;
+  }
+
+  public static List<String> toStringList(List<byte[]> raw) {
+    return raw.stream().map(String::new).collect(Collectors.toList());
   }
 
   public static Stream<Object> flatten(Object[] array) {

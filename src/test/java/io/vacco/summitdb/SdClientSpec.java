@@ -25,7 +25,7 @@ public class SdClientSpec {
   static {
     describe("SummitDB client", () -> {
       it("Can open a connection towards a target instance", () -> {
-        sc = new SdClient("127.0.0.1", 7481);
+        sc = new SdClient("127.0.0.1", 7483);
       });
       it("Can execute JGET/JSET commands", () -> {
         sc.withConn(r -> {
@@ -192,6 +192,27 @@ public class SdClientSpec {
           log(setIndex(r, new SdSetIndexNumber().namePattern(new SdSetIndexNamePattern().name("age").pattern("user:*:age")).type(SdSetIndexNumber.Type.INT)));
           log(indexes(r, new SdIndexes().pattern("*")));
           log(indexes(r, new SdIndexes().pattern("*").details(true)));
+        });
+      });
+
+      it("Can execute TTL/EXPIRE commands", () -> {
+        sc.withConn(r -> {
+          log(flushDb(r));
+          log(set(r, "ttlKey", "Hello"));
+          log(expire(r, "ttlKey", 10));
+          log(ttl(r, "ttlKey"));
+          log(set(r, "ttlKey", "Hello World"));
+          log(ttl(r, "ttlKey"));
+
+          log(set(r, "ttlKey1", "Hello"));
+          log(exists(r, "ttlKey1"));
+          log(expireAt(r, "ttlKey1", 1293840000));
+          log(exists(r, "ttlKey1"));
+
+          log(mset(r, new SdMSet().add("one", "1").add("two", "2").add("three", "3").add("four", "4")));
+          log(keys(r, new SdKeys().pattern("*o*")));
+          log(keys(r, new SdKeys().pattern("t??")));
+          log(keys(r, new SdKeys().pattern("*").withValues(true)));
         });
       });
 

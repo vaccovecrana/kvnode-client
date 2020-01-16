@@ -35,8 +35,7 @@ public class SdIndex {
   }
 
   public static List<String> iter(Redis r, SdIter iter) throws IOException {
-    List<byte[]> raw = r.call(iter.toArgs());
-    return raw.stream().map(String::new).collect(Collectors.toList());
+    return SdBase.toStringList(r.call(iter.toArgs()));
   }
 
   public static List<String> rect(Redis r, SdRect rect) throws IOException {

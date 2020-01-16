@@ -4,8 +4,9 @@ import io.vacco.summitdb.commands.SdBase;
 
 public class SdIter implements SdOptions {
 
-  private String index, pivot, match, rangeMin, rangeMax;
+  private String index, match, rangeMin, rangeMax;
   private SdLimit limit;
+  private SdPivot pivot;
   private SdSort order;
 
   public SdIter index(String name) {
@@ -13,7 +14,7 @@ public class SdIter implements SdOptions {
     return this;
   }
 
-  public SdIter pivot(String value) {
+  public SdIter pivot(SdPivot value) {
     this.pivot = value;
     return this;
   }
@@ -47,7 +48,7 @@ public class SdIter implements SdOptions {
   public Object[] toArgs() {
     return SdBase.flatten(new Object[] {
         "ITER", index,
-        pivot != null ? new Object[] {"PIVOT", pivot} : null,
+        pivot != null ? pivot.toArgs() : null,
         match != null ? new Object[] {"MATCH", match} : null,
         (rangeMin != null || rangeMax != null) ? new Object[] {"RANGE", rangeMin, rangeMax} : null,
         limit != null ? limit.toArgs() : null,
