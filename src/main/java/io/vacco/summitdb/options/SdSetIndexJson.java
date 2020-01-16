@@ -1,6 +1,8 @@
 package io.vacco.summitdb.options;
 
 import io.vacco.summitdb.commands.SdBase;
+import io.vacco.summitdb.spi.SdOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 

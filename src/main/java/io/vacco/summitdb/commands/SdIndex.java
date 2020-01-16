@@ -2,7 +2,7 @@ package io.vacco.summitdb.commands;
 
 import io.vacco.redis.Redis;
 import io.vacco.summitdb.options.*;
-import io.vacco.summitdb.util.SdIndexMetadata;
+import io.vacco.summitdb.options.SdIndexMetadata;
 
 import java.io.IOException;
 import java.util.ArrayList;

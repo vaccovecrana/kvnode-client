@@ -1,6 +1,7 @@
 package io.vacco.summitdb;
 
 import io.vacco.redis.*;
+import io.vacco.summitdb.spi.SdPoolSupplier;
 import stormpot.*;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;

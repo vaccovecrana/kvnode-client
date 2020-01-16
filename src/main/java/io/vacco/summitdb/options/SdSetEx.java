@@ -1,5 +1,7 @@
 package io.vacco.summitdb.options;
 
+import io.vacco.summitdb.spi.SdOptions;
+
 import static io.vacco.summitdb.commands.SdBase.flatten;
 
 public class SdSetEx implements SdOptions {

@@ -1,6 +1,7 @@
 package io.vacco.summitdb.options;
 
 import io.vacco.summitdb.commands.SdBase;
+import io.vacco.summitdb.spi.SdOptions;
 
 public class SdSetIndexUser implements SdOptions {
 

@@ -1,4 +1,4 @@
-package io.vacco.summitdb.options;
+package io.vacco.summitdb.spi;
 
 public interface SdOptions {
   Object[] toArgs();

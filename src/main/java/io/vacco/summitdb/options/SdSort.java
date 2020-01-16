@@ -1,5 +1,7 @@
 package io.vacco.summitdb.options;
 
+import io.vacco.summitdb.spi.SdOptions;
+
 public class SdSort implements SdOptions {
 
   public enum Order { ASC, DESC }

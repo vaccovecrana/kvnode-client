@@ -1,4 +1,4 @@
-package io.vacco.summitdb.util;
+package io.vacco.summitdb.options;
 
 public class SdIndexMetadata {
 
