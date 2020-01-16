@@ -216,6 +216,27 @@ public class SdClientSpec {
         });
       });
 
+      it("Can execute PTTL/PEXPIRE commands", () -> {
+        sc.withConn(r -> {
+          log(flushDb(r));
+          log(set(r, "myKey", "Hello"));
+          log(expire(r, "myKey", 1));
+          log(pTtl(r, "myKey"));
+
+          log(flushDb(r));
+          log(set(r, "myKey", "Hello"));
+          log(pExpire(r, "myKey", 1500));
+          log(ttl(r, "myKey"));
+          log(pTtl(r, "myKey"));
+
+          log(flushDb(r));
+          log(set(r, "myKey2", "Hello"));
+          log(pExpireAt(r, "myKey2", "4072275820000"));
+          log(ttl(r, "myKey2"));
+          log(pTtl(r, "myKey2"));
+        });
+      });
+
       it("Can change pool timeout values", () -> {
         sc.setTimeout(3, TimeUnit.SECONDS);
       });

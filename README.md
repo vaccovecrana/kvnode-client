@@ -33,9 +33,9 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [ ] MSETNX
 - [ ] PDEL
 - [ ] PERSIST
-- [ ] PEXPIRE
-- [ ] PEXPIREAT
-- [ ] PTTL
+- [x] PEXPIRE
+- [x] PEXPIREAT
+- [x] PTTL
 - [ ] RENAME
 - [ ] RENAMENX
 - [x] SET

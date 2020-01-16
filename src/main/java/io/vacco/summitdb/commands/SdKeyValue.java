@@ -29,8 +29,8 @@ public class SdKeyValue {
     return r.call("EXPIRE", key, Long.toString(seconds)); // TODO why is summitdb not accepting a number primitive???
   }
 
-  public static long expireAt(Redis r, String key, long timeStamp) throws IOException {
-    return r.call("EXPIREAT", key, Long.toString(timeStamp));
+  public static long expireAt(Redis r, String key, long timestampSeconds) throws IOException {
+    return r.call("EXPIREAT", key, Long.toString(timestampSeconds));
   }
 
   public static String get(Redis r, String key) throws IOException {
@@ -43,6 +43,22 @@ public class SdKeyValue {
 
   public static String mset(Redis r, SdMSet mSet) throws IOException {
     return SdBase.rawStrCmd(r, mSet.toArgs());
+  }
+
+  public static long pExpire(Redis r, String key, long millis) throws IOException {
+    return r.call("PEXPIRE", key, Long.toString(millis));
+  }
+
+  public static long pExpireAt(Redis r, String key, String unsignedMillis) throws IOException {
+    return r.call("PEXPIREAT", key, unsignedMillis);
+  }
+
+  public static long pExpireAt(Redis r, String key, long timestampMillis) throws IOException {
+    return pExpireAt(r, key, Long.toString(timestampMillis));
+  }
+
+  public static long pTtl(Redis r, String key) throws IOException {
+    return r.call("PTTL", key);
   }
 
   public static String set(Redis r, String key, String value) throws IOException {
