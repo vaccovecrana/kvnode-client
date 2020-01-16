@@ -38,6 +38,10 @@ public class SdIndex {
     return SdBase.toStringList(r.call(iter.toArgs()));
   }
 
+  public static List<String> iter(Redis r, String indexName) throws IOException {
+    return iter(r, new SdIter().index(indexName));
+  }
+
   public static List<String> rect(Redis r, SdRect rect) throws IOException {
     List<byte[]> raw = r.call(rect.toArgs());
     return raw.stream().map(String::new).collect(Collectors.toList());
@@ -47,8 +51,20 @@ public class SdIndex {
     return SdBase.rawStrCmd(r, indexText.toArgs());
   }
 
+  public static String setIndexText(Redis r, String name, String pattern) throws IOException {
+    return setIndex(r, new SdSetIndexText().namePattern(
+        new SdSetIndexNamePattern().name(name).pattern(pattern)
+    ));
+  }
+
   public static String setIndex(Redis r, SdSetIndexNumber indexNumber) throws IOException {
     return SdBase.rawStrCmd(r, indexNumber.toArgs());
+  }
+
+  public static String setIndexNumber(Redis r, String name, String pattern, SdSetIndexNumber.Type t) throws IOException {
+    return setIndex(r, new SdSetIndexNumber().namePattern(
+        new SdSetIndexNamePattern().name(name).pattern(pattern)
+    ).type(t));
   }
 
   public static String setIndex(Redis r, SdSetIndexJson indexJson) throws IOException {
@@ -61,5 +77,11 @@ public class SdIndex {
 
   public static String setIndex(Redis r, SdSetIndexSpatial indexSpatial) throws IOException {
     return SdBase.rawStrCmd(r, indexSpatial.toArgs());
+  }
+
+  public static String setIndexSpatial(Redis r, String name, String pattern) throws IOException {
+    return setIndex(r, new SdSetIndexSpatial().namePattern(
+        new SdSetIndexNamePattern().name(name).pattern(pattern)
+    ));
   }
 }
