@@ -75,12 +75,12 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 
 ### Raft management
 
-- [ ] RAFTADDPEER
-- [ ] RAFTREMOVEPEER
-- [ ] RAFTLEADER
-- [ ] RAFTSNAPSHOT
-- [ ] RAFTSTATE
-- [ ] RAFTSTATS
+- [x] RAFTADDPEER
+- [x] RAFTREMOVEPEER
+- [x] RAFTLEADER
+- [x] RAFTSNAPSHOT
+- [x] RAFTSTATE
+- [x] RAFTSTATS
 
 ### Server
 
