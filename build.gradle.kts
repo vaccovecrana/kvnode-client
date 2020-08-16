@@ -22,8 +22,8 @@ dependencies {
 }
 
 object Publishing {
-  const val gitUrl = "https://github.com/vaccovecrana/jtinn.git"
-  const val siteUrl = "https://github.com/vaccovecrana/jtinn"
+  const val gitUrl = "https://github.com/vaccovecrana/summitdb-client.git"
+  const val siteUrl = "https://github.com/vaccovecrana/summitdb-client"
   const val libraryDesc = "SummitDB Java client"
 }
 
