@@ -7,18 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/*
-RAFT LEADER
-RAFT INFO [pattern]
-RAFT SERVER LIST
-RAFT SERVER ADD id address
-RAFT SERVER REMOVE id
-RAFT SNAPSHOT NOW
-RAFT SNAPSHOT LIST
-RAFT SNAPSHOT FILE id
-RAFT SNAPSHOT READ id [RANGE start end]
- */
-
 public class KnRaft {
 
   public static String raftAddPeer(KnRedis r, String peer) throws IOException {

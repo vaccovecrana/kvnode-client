@@ -28,7 +28,6 @@ public class KnClient {
   public KnClient(KnClientConfig cfg) { this(new KnAllocator(cfg)); }
   public KnClient(String host, int port) { this(KnClientConfig.of(host, port)); }
 
-  public Pool<Pooled<KnRedis>> getPool() { return pool; }
   public void setTimeout(long duration, TimeUnit unit) {
     this.timeout = new Timeout(duration, unit);
   }

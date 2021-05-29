@@ -1,8 +1,11 @@
 ## `summitdb-client`
 
-A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
+A minimal Java client for [kvnode](https://github.com/tidwall/kvnode).
 
-## Implemented `summitdb` commands:
+## Implemented `kvnode` commands:
+
+> Note: some standard Redis commands may be implemented,
+> but are not supported by `kvnode` yet.
 
 ### Keys and values
 
@@ -17,8 +20,6 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [x] EXISTS
 - [x] EXPIRE
 - [x] EXPIREAT
-- [ ] FENCE
-- [ ] FENCEGET
 - [x] FLUSHDB
 - [x] GET
 - [ ] GETBIT
@@ -31,7 +32,6 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [ ] MGET
 - [x] MSET
 - [ ] MSETNX
-- [ ] PDEL
 - [ ] PERSIST
 - [x] PEXPIRE
 - [x] PEXPIREAT
@@ -44,20 +44,6 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 - [x] STRLEN
 - [x] TTL
 
-### JSON
-
-- [x] JSET
-- [x] JGET
-- [x] JDEL
-
-### Indexes and iteration
-
-- [x] DELINDEX
-- [x] INDEXES
-- [x] ITER
-- [x] RECT
-- [x] SETINDEX
-
 ### Transactions
 
 - [ ] MULTI
@@ -67,21 +53,18 @@ A minimal Java client for [summitdb](https://github.com/tidwall/summitdb).
 ### Scripts
 
 - [ ] EVAL
-- [ ] EVALRO
 - [ ] EVALSHA
-- [ ] EVALSHARO
 - [ ] SCRIPT LOAD
 - [ ] SCRIPT FLUSH
 
 ### Raft management
 
-- [x] RAFTADDPEER
-- [x] RAFTREMOVEPEER
-- [x] RAFTLEADER
-- [x] RAFTSNAPSHOT
-- [x] RAFTSTATE
-- [x] RAFTSTATS
-
-### Server
-
-- [ ] BACKUP
+- [ ] RAFT LEADER
+- [ ] RAFT INFO
+- [ ] RAFT SERVER LIST
+- [ ] RAFT SERVER ADD
+- [ ] RAFT SERVER REMOVE
+- [ ] RAFT SNAPSHOT NOW
+- [ ] RAFT SNAPSHOT LIST
+- [ ] RAFT SNAPSHOT FILE
+- [ ] RAFT SNAPSHOT READ
