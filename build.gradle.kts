@@ -12,5 +12,5 @@ configure<io.vacco.oss.gitflow.GsPluginProfileExtension> {
 val api by configurations
 
 dependencies {
-  api("com.github.chrisvest:stormpot:3.0")
+  api("com.github.chrisvest:stormpot:3.1")
 }
